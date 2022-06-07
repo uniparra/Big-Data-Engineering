@@ -25,14 +25,6 @@ Using Scala version 2.12.10 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_331)
 Type in expressions to have them evaluated.
 Type :help for more information.
 
-scala> 22/06/07 17:05:55 WARN ProcfsMetricsGetter: Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
-
-
-scala> import org.apavhe.spark.sql.functions._
-<console>:23: error: object apavhe is not a member of package org
-       import org.apavhe.spark.sql.functions._
-                  ^
-
 scala> import org.apache.spark.sql.functions._
 import org.apache.spark.sql.functions._
 
