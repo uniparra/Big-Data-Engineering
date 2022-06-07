@@ -4,7 +4,8 @@ import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types._
 
 /**
- * @author ${user.name}
+ * En main se construira un DF programaticamente. Mientras que en la funcion axiliar usando DDL. Se leeran los daton 
+ * en ambos casos desde un fichero json.
  */
 object Estructura {
 
@@ -32,6 +33,7 @@ object Estructura {
     spark.stop()
     Session()
   }
+  /*** Aquí encontramos la manera de definir un DF mediante DDL ***/
   def Session (): Unit ={
     val spark = SparkSession.builder.appName("Auxiliar").getOrCreate()
     val schema = "Id INT, First STRING, Last STRING, Url STRING, Published STRING, Hits INT, Campaings ARRAY<STRING>"
