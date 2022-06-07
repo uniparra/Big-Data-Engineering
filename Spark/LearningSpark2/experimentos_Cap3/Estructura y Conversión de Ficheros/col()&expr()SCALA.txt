@@ -1,3 +1,8 @@
+Veremos unos ejemplos de uso de las funciones col() y expr(). 
+      * col('nombreCol') nos cogera los registros de la columna nombreCol,
+      * expr('nombreCol'R x) relaciona los registros de nombreCol con x mediante la relacion R. x puede ser tanto un numero como otro expr('nombreCol2').
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Microsoft Windows [Versión 10.0.19044.1706]
 (c) Microsoft Corporation. Todos los derechos reservados.
 
