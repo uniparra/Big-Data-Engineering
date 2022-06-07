@@ -1,4 +1,6 @@
 Veremos unos ejemplos de uso de las funciones col() y expr(). 
+      * Es importante señalar que col('nombreCol') devuelve un objeto Column
+      * $ es una funcion de spark que convierte la columna llamda nombreCol en un objeto Column. ESTO ES IMPORTANTE EN UNO DE LOS ÚLTIMOS EJEMPLOS (cuando se ordena el DF)
       * col('nombreCol') nos cogera los registros de la columna nombreCol,
       * expr('nombreCol'R x) relaciona los registros de nombreCol con x mediante la relacion R. x puede ser tanto un numero como otro expr('nombreCol2').
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
