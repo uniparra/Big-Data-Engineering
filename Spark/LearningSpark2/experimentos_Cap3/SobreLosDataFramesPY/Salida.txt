@@ -1,0 +1,422 @@
+Microsoft Windows [Versión 10.0.19044.1706]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\unai.iparraguirre>cd PycharmProjects\RowPY
+
+C:\Users\unai.iparraguirre\PycharmProjects\RowPY>spark-submit main.py
+22/06/10 18:46:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+__________________________________Funci¾n Row()__________________________________
+Row(6=1)
+____________________________________________________________________
+
+__________________________________Creación DF mediante un schema__________________________________
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+22/06/10 18:46:13 INFO InMemoryFileIndex: It took 32 ms to list leaf files for 1 paths.
+____________________________________________________________________
+
+__________________________________Escritura en distintos tipos de ficheros__________________________________
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "CallNumber",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "UnitID",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "IncidentNumber",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CallType",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CallDate",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "WatchDate",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CallFinalDisposition",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "AvailableDtTm",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Address",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "City",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Zipcode",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Battalion",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "StationArea",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Box",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "OriginalPriority",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Priority",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FinalPriority",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ALSUnit",
+    "type" : "boolean",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CallTypeGroup",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NumAlarms",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "UnitType",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "UnitSequenceInCallDispatch",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FirePreventionDistrict",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "SupervisorDistrict",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Neighborhood",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Location",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "RowID",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Delay",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional int32 CallNumber;
+  optional binary UnitID (UTF8);
+  optional int32 IncidentNumber;
+  optional binary CallType (UTF8);
+  optional binary CallDate (UTF8);
+  optional binary WatchDate (UTF8);
+  optional binary CallFinalDisposition (UTF8);
+  optional binary AvailableDtTm (UTF8);
+  optional binary Address (UTF8);
+  optional binary City (UTF8);
+  optional int32 Zipcode;
+  optional binary Battalion (UTF8);
+  optional binary StationArea (UTF8);
+  optional binary Box (UTF8);
+  optional binary OriginalPriority (UTF8);
+  optional binary Priority (UTF8);
+  optional int32 FinalPriority;
+  optional boolean ALSUnit;
+  optional binary CallTypeGroup (UTF8);
+  optional int32 NumAlarms;
+  optional binary UnitType (UTF8);
+  optional int32 UnitSequenceInCallDispatch;
+  optional binary FirePreventionDistrict (UTF8);
+  optional binary SupervisorDistrict (UTF8);
+  optional binary Neighborhood (UTF8);
+  optional binary Location (UTF8);
+  optional binary RowID (UTF8);
+  optional float Delay;
+}
+____________________________________________________________________
+
+__________________________________Filtrados__________________________________
+_____________________.where() sencillo_________________
+22/06/10 18:46:21 INFO CodeGenerator: Code generated in 19.2583 ms
++--------------+----------------------+-----------------------------+
+|IncidentNumber|AvailableDtTm         |CallType                     |
++--------------+----------------------+-----------------------------+
+|2003235       |01/11/2002 01:51:44 AM|Structure Fire               |
+|2003250       |01/11/2002 04:16:46 AM|Vehicle Fire                 |
+|2003259       |01/11/2002 06:01:58 AM|Alarms                       |
+|2003279       |01/11/2002 08:03:26 AM|Structure Fire               |
+|2003301       |01/11/2002 09:46:44 AM|Alarms                       |
+|2003304       |01/11/2002 09:58:53 AM|Alarms                       |
+|2003382       |01/11/2002 02:59:04 PM|Structure Fire               |
+|2003408       |01/11/2002 04:09:08 PM|Structure Fire               |
+|2003408       |01/11/2002 04:09:08 PM|Structure Fire               |
+|2003408       |01/11/2002 04:09:08 PM|Structure Fire               |
+|2003429       |01/11/2002 05:17:15 PM|Odor (Strange / Unknown)     |
+|2003453       |01/11/2002 06:48:01 PM|Alarms                       |
+|2003497       |01/11/2002 09:03:17 PM|Structure Fire               |
+|2003554       |01/12/2002 01:56:32 AM|Structure Fire               |
+|2003618       |01/12/2002 11:07:36 AM|Odor (Strange / Unknown)     |
+|2003649       |01/12/2002 01:03:10 PM|Odor (Strange / Unknown)     |
+|2003695       |01/12/2002 04:46:59 PM|Structure Fire               |
+|2003756       |01/12/2002 07:54:42 PM|Alarms                       |
+|2003770       |01/12/2002 08:44:01 PM|Smoke Investigation (Outside)|
+|2003777       |01/12/2002 09:14:13 PM|Structure Fire               |
++--------------+----------------------+-----------------------------+
+only showing top 20 rows
+
+_____________________.where() con &&(=!=)_________________
+22/06/10 18:46:22 INFO TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+22/06/10 18:46:22 INFO DAGScheduler: Job 3 finished: showString at <unknown>:0, took 0,069402 s
++--------------+----------------------+-----------------------------+
+|IncidentNumber|AvailableDtTm         |CallType                     |
++--------------+----------------------+-----------------------------+
+|2003250       |01/11/2002 04:16:46 AM|Vehicle Fire                 |
+|2003259       |01/11/2002 06:01:58 AM|Alarms                       |
+|2003279       |01/11/2002 08:03:26 AM|Structure Fire               |
+|2003301       |01/11/2002 09:46:44 AM|Alarms                       |
+|2003304       |01/11/2002 09:58:53 AM|Alarms                       |
+|2003382       |01/11/2002 02:59:04 PM|Structure Fire               |
+|2003408       |01/11/2002 04:09:08 PM|Structure Fire               |
+|2003408       |01/11/2002 04:09:08 PM|Structure Fire               |
+|2003408       |01/11/2002 04:09:08 PM|Structure Fire               |
+|2003429       |01/11/2002 05:17:15 PM|Odor (Strange / Unknown)     |
+|2003453       |01/11/2002 06:48:01 PM|Alarms                       |
+|2003497       |01/11/2002 09:03:17 PM|Structure Fire               |
+|2003554       |01/12/2002 01:56:32 AM|Structure Fire               |
+|2003618       |01/12/2002 11:07:36 AM|Odor (Strange / Unknown)     |
+|2003649       |01/12/2002 01:03:10 PM|Odor (Strange / Unknown)     |
+|2003695       |01/12/2002 04:46:59 PM|Structure Fire               |
+|2003756       |01/12/2002 07:54:42 PM|Alarms                       |
+|2003770       |01/12/2002 08:44:01 PM|Smoke Investigation (Outside)|
+|2003777       |01/12/2002 09:14:13 PM|Structure Fire               |
+|2003887       |01/13/2002 09:38:41 AM|Structure Fire               |
++--------------+----------------------+-----------------------------+
+only showing top 20 rows
+
+_____________________.where() con &&(===) y .isNotNull()_________________
+22/06/10 18:46:22 INFO DAGScheduler: Job 4 finished: showString at <unknown>:0, took 0,054963 s
++--------------+----------------------+----------------+
+|IncidentNumber|AvailableDtTm         |CallType        |
++--------------+----------------------+----------------+
+|2003241       |01/11/2002 03:01:18 AM|Medical Incident|
+|2003242       |01/11/2002 02:39:50 AM|Medical Incident|
+|2003343       |01/11/2002 12:06:57 PM|Medical Incident|
+|2003348       |01/11/2002 01:08:40 PM|Medical Incident|
+|2003381       |01/11/2002 03:31:02 PM|Medical Incident|
+|2003399       |01/11/2002 04:22:49 PM|Medical Incident|
+|2003403       |01/11/2002 04:18:33 PM|Medical Incident|
+|2003409       |01/11/2002 04:34:23 PM|Medical Incident|
+|2003417       |01/11/2002 04:51:31 PM|Medical Incident|
+|2003417       |01/11/2002 04:51:12 PM|Medical Incident|
+|2003435       |01/11/2002 05:46:30 PM|Medical Incident|
+|2003500       |01/11/2002 10:08:48 PM|Medical Incident|
+|2003529       |01/11/2002 10:56:59 PM|Medical Incident|
+|2003550       |01/12/2002 02:04:06 AM|Medical Incident|
+|2003576       |01/12/2002 04:17:22 AM|Medical Incident|
+|2003577       |01/12/2002 04:23:31 AM|Medical Incident|
+|2003584       |01/12/2002 06:27:31 AM|Medical Incident|
+|2003630       |01/12/2002 11:28:40 AM|Medical Incident|
+|2003639       |01/12/2002 12:15:25 PM|Medical Incident|
+|2003642       |01/12/2002 01:23:04 PM|Medical Incident|
++--------------+----------------------+----------------+
+only showing top 20 rows
+
+_____________________.where() con fireDF('nombreCol')_________________
+22/06/10 18:46:22 INFO DAGScheduler: Job 5 finished: showString at <unknown>:0, took 0,047511 s
++--------------+----------------------+----------------+
+|IncidentNumber|AvailableDtTm         |CallType        |
++--------------+----------------------+----------------+
+|2003241       |01/11/2002 03:01:18 AM|Medical Incident|
+|2003242       |01/11/2002 02:39:50 AM|Medical Incident|
+|2003343       |01/11/2002 12:06:57 PM|Medical Incident|
+|2003348       |01/11/2002 01:08:40 PM|Medical Incident|
+|2003381       |01/11/2002 03:31:02 PM|Medical Incident|
+|2003399       |01/11/2002 04:22:49 PM|Medical Incident|
+|2003403       |01/11/2002 04:18:33 PM|Medical Incident|
+|2003409       |01/11/2002 04:34:23 PM|Medical Incident|
+|2003417       |01/11/2002 04:51:31 PM|Medical Incident|
+|2003417       |01/11/2002 04:51:12 PM|Medical Incident|
+|2003435       |01/11/2002 05:46:30 PM|Medical Incident|
+|2003500       |01/11/2002 10:08:48 PM|Medical Incident|
+|2003529       |01/11/2002 10:56:59 PM|Medical Incident|
+|2003550       |01/12/2002 02:04:06 AM|Medical Incident|
+|2003576       |01/12/2002 04:17:22 AM|Medical Incident|
+|2003577       |01/12/2002 04:23:31 AM|Medical Incident|
+|2003584       |01/12/2002 06:27:31 AM|Medical Incident|
+|2003593       |null                  |Medical Incident|
+|2003630       |01/12/2002 11:28:40 AM|Medical Incident|
+|2003639       |01/12/2002 12:15:25 PM|Medical Incident|
++--------------+----------------------+----------------+
+only showing top 20 rows
+
+_____________________.where() con filter y where. Distinta forma concatenar distintos filtrados_________________
+22/06/10 18:46:22 INFO DAGScheduler: Job 6 finished: showString at <unknown>:0, took 0,054057 s
++--------------+----------------------+----------------+
+|IncidentNumber|AvailableDtTm         |CallType        |
++--------------+----------------------+----------------+
+|2003241       |01/11/2002 03:01:18 AM|Medical Incident|
+|2003343       |01/11/2002 12:06:57 PM|Medical Incident|
+|2003348       |01/11/2002 01:08:40 PM|Medical Incident|
+|2003381       |01/11/2002 03:31:02 PM|Medical Incident|
+|2003399       |01/11/2002 04:22:49 PM|Medical Incident|
+|2003403       |01/11/2002 04:18:33 PM|Medical Incident|
+|2003409       |01/11/2002 04:34:23 PM|Medical Incident|
+|2003417       |01/11/2002 04:51:31 PM|Medical Incident|
+|2003417       |01/11/2002 04:51:12 PM|Medical Incident|
+|2003435       |01/11/2002 05:46:30 PM|Medical Incident|
+|2003500       |01/11/2002 10:08:48 PM|Medical Incident|
+|2003529       |01/11/2002 10:56:59 PM|Medical Incident|
+|2003550       |01/12/2002 02:04:06 AM|Medical Incident|
+|2003576       |01/12/2002 04:17:22 AM|Medical Incident|
+|2003577       |01/12/2002 04:23:31 AM|Medical Incident|
+|2003584       |01/12/2002 06:27:31 AM|Medical Incident|
+|2003593       |null                  |Medical Incident|
+|2003630       |01/12/2002 11:28:40 AM|Medical Incident|
+|2003639       |01/12/2002 12:15:25 PM|Medical Incident|
+|2003642       |01/12/2002 01:23:04 PM|Medical Incident|
++--------------+----------------------+----------------+
+only showing top 20 rows
+
+_____________________.where() con Agregación_________________
+22/06/10 18:46:25 INFO CodeGenerator: Code generated in 8.0842 ms
++-----------------+
+|DistinctCallTypes|
++-----------------+
+|               30|
++-----------------+
+
+____________________________________________________________________
+
+__________________________________Modificar DF__________________________________
+22/06/10 18:46:25 INFO DAGScheduler: Job 8 finished: showString at <unknown>:0, took 0,044971 s
+22/06/10 18:46:25 INFO CodeGenerator: Code generated in 12.7615 ms
++--------------+--------------------+----------------+---------------------+
+|IncidentNumber|       AvailableDtTm|        CallType|ResponseDelayedinMins|
++--------------+--------------------+----------------+---------------------+
+|       2003235|01/11/2002 01:51:...|  Structure Fire|                 2.95|
+|       2003241|01/11/2002 03:01:...|Medical Incident|                  4.7|
+|       2003242|01/11/2002 02:39:...|Medical Incident|            2.4333334|
+|       2003250|01/11/2002 04:16:...|    Vehicle Fire|                  1.5|
+|       2003259|01/11/2002 06:01:...|          Alarms|            3.4833333|
+|       2003279|01/11/2002 08:03:...|  Structure Fire|                 1.75|
+|       2003301|01/11/2002 09:46:...|          Alarms|            2.7166667|
+|       2003304|01/11/2002 09:58:...|          Alarms|            1.7833333|
+|       2003343|01/11/2002 12:06:...|Medical Incident|            1.5166667|
+|       2003348|01/11/2002 01:08:...|Medical Incident|            2.7666667|
+|       2003381|01/11/2002 03:31:...|Medical Incident|            2.1833334|
+|       2003382|01/11/2002 02:59:...|  Structure Fire|                  2.5|
+|       2003399|01/11/2002 04:22:...|Medical Incident|            2.4166667|
+|       2003403|01/11/2002 04:18:...|Medical Incident|                 4.95|
+|       2003408|01/11/2002 04:09:...|  Structure Fire|            1.4166666|
+|       2003408|01/11/2002 04:09:...|  Structure Fire|            2.5333333|
+|       2003408|01/11/2002 04:09:...|  Structure Fire|            1.8833333|
+|       2003409|01/11/2002 04:34:...|Medical Incident|                 5.35|
+|       2003417|01/11/2002 04:51:...|Medical Incident|                  2.0|
+|       2003417|01/11/2002 04:51:...|Medical Incident|            1.8166667|
++--------------+--------------------+----------------+---------------------+
+only showing top 20 rows
+
+____________________________________________________________________
+
+__________________________________Conversión de fechas__________________________________
+22/06/10 18:46:25 INFO CodeGenerator: Code generated in 41.7705 ms
++-------------------+-------------------+-------------+
+|IncidentDate       |OnWatchDate        |AvailableDtTS|
++-------------------+-------------------+-------------+
+|2002-01-11 00:00:00|2002-01-10 00:00:00|2002-01-11   |
+|2002-01-11 00:00:00|2002-01-10 00:00:00|2002-01-11   |
+|2002-01-11 00:00:00|2002-01-10 00:00:00|2002-01-11   |
+|2002-01-11 00:00:00|2002-01-10 00:00:00|2002-01-11   |
+|2002-01-11 00:00:00|2002-01-10 00:00:00|2002-01-11   |
++-------------------+-------------------+-------------+
+only showing top 5 rows
+
+____________________________________________________________________
+
+__________________________________Agregaciones__________________________________
+groupBy(), orderBy()
+22/06/10 18:46:27 INFO DAGScheduler: Job 10 finished: showString at <unknown>:0, took 1,127214 s
+22/06/10 18:46:27 INFO CodeGenerator: Code generated in 11.3179 ms
+22/06/10 18:46:27 INFO CodeGenerator: Code generated in 5.6724 ms
++-------------------------------+------+
+|CallType                       |count |
++-------------------------------+------+
+|Medical Incident               |113794|
+|Structure Fire                 |23319 |
+|Alarms                         |19406 |
+|Traffic Collision              |7013  |
+|Citizen Assist / Service Call  |2524  |
+|Other                          |2166  |
+|Outside Fire                   |2094  |
+|Vehicle Fire                   |854   |
+|Gas Leak (Natural and LP Gases)|764   |
+|Water Rescue                   |755   |
++-------------------------------+------+
+only showing top 10 rows
+
+......... funciones de agregaci¾n sum(), min(),max(),avg()............
+22/06/10 18:46:27 INFO DAGScheduler: Job 11 finished: showString at <unknown>:0, took 0,278315 s
++--------------+--------------------------+--------------------------+--------------------------+
+|sum(NumAlarms)|avg(ResponseDelayedinMins)|min(ResponseDelayedinMins)|max(ResponseDelayedinMins)|
++--------------+--------------------------+--------------------------+--------------------------+
+|        176170|         3.892364154521585|               0.016666668|                   1844.55|
++--------------+--------------------------+--------------------------+--------------------------+
+
+_________________________________________________FIN_____________________________________________________
