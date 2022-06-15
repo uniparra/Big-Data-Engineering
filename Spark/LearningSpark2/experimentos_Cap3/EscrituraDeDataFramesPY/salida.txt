@@ -1,0 +1,377 @@
+PS C:\Users\unai.iparraguirre\PycharmProjects\EjercicioAdicionalPY> spark-submit main.py
+22/06/15 17:25:35 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+22/06/15 17:25:36 INFO SparkContext: Running Spark version 3.0.3
+22/06/15 17:25:36 INFO ResourceUtils: ==============================================================
+22/06/15 17:25:36 INFO ResourceUtils: Resources for spark.driver:
+
+22/06/15 17:25:36 INFO ResourceUtils: ==============================================================
+
+22/06/15 17:25:46 INFO ParquetOutputFormat: Min row count for page size check is: 100
+22/06/15 17:25:46 INFO ParquetOutputFormat: Max row count for page size check is: 10000
+22/06/15 17:25:46 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "State",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Color",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary State (UTF8);
+  optional binary Color (UTF8);
+  optional int32 Count;
+}
+
+
+22/06/15 17:25:47 INFO CodecPool: Got brand-new compressor [.snappy]
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "State",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Color",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary State (UTF8);
+  optional binary Color (UTF8);
+  optional int32 Count;
+}
+
+
+22/06/15 17:25:51 INFO ParquetOutputFormat: Validation is off
+22/06/15 17:25:51 INFO ParquetOutputFormat: Page size checking is: estimated
+22/06/15 17:25:51 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "State",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Color",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary State (UTF8);
+  optional binary Color (UTF8);
+  optional int32 Count;
+}
+
+
+22/06/15 17:25:51 INFO ParquetOutputFormat: Min row count for page size check is: 100
+22/06/15 17:25:51 INFO ParquetOutputFormat: Writer version is: PARQUET_1_0
+22/06/15 17:25:51 INFO ParquetOutputFormat: Max row count for page size check is: 10000
+22/06/15 17:25:51 INFO ParquetOutputFormat: Maximum row group padding size is 8388608 bytes
+22/06/15 17:25:51 INFO ParquetOutputFormat: Page size checking is: estimated
+22/06/15 17:25:51 INFO ParquetOutputFormat: Min row count for page size check is: 100
+22/06/15 17:25:51 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "State",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Color",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary State (UTF8);
+  optional binary Color (UTF8);
+  optional int32 Count;
+}
+
+
+22/06/15 17:25:51 INFO ParquetOutputFormat: Max row count for page size check is: 10000
+22/06/15 17:25:51 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "State",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Color",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary State (UTF8);
+  optional binary Color (UTF8);
+  optional int32 Count;
+}
+
+
+
+22/06/15 17:25:54 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "State",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Color",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary State (UTF8);
+  optional binary Color (UTF8);
+  optional int32 Count;
+}
+
+
+22/06/15 17:25:54 INFO ParquetOutputFormat: Page size checking is: estimated
+22/06/15 17:25:54 INFO ParquetOutputFormat: Parquet block size to 134217728
+22/06/15 17:25:54 INFO ParquetOutputFormat: Min row count for page size check is: 100
+22/06/15 17:25:54 INFO ParquetOutputFormat: Parquet page size to 1048576
+22/06/15 17:25:54 INFO ParquetOutputFormat: Max row count for page size check is: 10000
+22/06/15 17:25:54 INFO ParquetOutputFormat: Parquet page size to 1048576
+22/06/15 17:25:54 INFO ParquetOutputFormat: Parquet dictionary page size to 1048576
+22/06/15 17:25:54 INFO ParquetOutputFormat: Dictionary is on
+22/06/15 17:25:54 INFO ParquetOutputFormat: Parquet dictionary page size to 1048576
+22/06/15 17:25:54 INFO ParquetOutputFormat: Dictionary is on
+22/06/15 17:25:54 INFO ParquetOutputFormat: Validation is off
+22/06/15 17:25:54 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "State",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Color",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary State (UTF8);
+  optional binary Color (UTF8);
+  optional int32 Count;
+}
+
+
+22/06/15 17:25:54 INFO ParquetOutputFormat: Writer version is: PARQUET_1_0
+22/06/15 17:25:54 INFO ParquetOutputFormat: Maximum row group padding size is 8388608 bytes
+22/06/15 17:25:54 INFO ParquetOutputFormat: Validation is off
+22/06/15 17:25:54 INFO ParquetOutputFormat: Writer version is: PARQUET_1_0
+22/06/15 17:25:54 INFO ParquetOutputFormat: Maximum row group padding size is 8388608 bytes
+22/06/15 17:25:54 INFO ParquetOutputFormat: Page size checking is: estimated
+22/06/15 17:25:54 INFO ParquetOutputFormat: Page size checking is: estimated
+22/06/15 17:25:54 INFO ParquetOutputFormat: Min row count for page size check is: 100
+22/06/15 17:25:54 INFO ParquetOutputFormat: Min row count for page size check is: 100
+22/06/15 17:25:54 INFO ParquetOutputFormat: Max row count for page size check is: 10000
+22/06/15 17:25:54 INFO ParquetOutputFormat: Max row count for page size check is: 10000
+22/06/15 17:25:54 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "State",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Color",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary State (UTF8);
+  optional binary Color (UTF8);
+  optional int32 Count;
+}
+
+
+22/06/15 17:25:54 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "State",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Color",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  optional binary State (UTF8);
+  optional binary Color (UTF8);
+  optional int32 Count;
+}
+
+
+22/06/15 17:25:56 INFO CodeGenerator: Code generated in 18.6228 ms
++-----+------+-----+
+|State| Color|Count|
++-----+------+-----+
+|   TX|   Red|   20|
+|   WY|  Blue|   16|
+|   WA|Yellow|   20|
+|   CO|   Red|   12|
+|   CO|   Red|   17|
+|   OR| Green|   16|
+|   NM|Yellow|   15|
+|   WA|   Red|   12|
+|   OR| Green|   13|
+|   NV|Orange|   10|
+|   WY| Green|   15|
+|   AZ| Brown|   16|
+|   WA|Yellow|   19|
+|   WY|Yellow|   18|
+|   CA|  Blue|   13|
+|   WA| Brown|   20|
+|   CO|   Red|   17|
+|   TX|Yellow|   20|
+|   WA| Green|   10|
+|   WA| Brown|   21|
++-----+------+-----+
+only showing top 20 rows
+
+
+22/06/15 17:25:56 INFO DAGScheduler: Job 18 finished: showString at <unknown>:0, took 0,023091 s
++-----+------+-----+
+|State| Color|Count|
++-----+------+-----+
+|   TX|   Red|   20|
+|   OR|  Blue|   71|
+|   CA|Yellow|   53|
+|   OR| Green|   71|
+|   TX| Green|   68|
+|   WA|Yellow|   20|
+|   NV|   Red|   43|
+|   NM|Yellow|   15|
+|   WY| Green|   15|
+|   WA| Green|   99|
+|   TX|Yellow|   29|
+|   WA|Yellow|   19|
+|   CO| Brown|   53|
+|   CO|   Red|   81|
+|   WA| Brown|   20|
+|   OR|  Blue|   29|
+|   AZ|Orange|   54|
+|   NM| Green|   42|
+|   WA|Orange|   84|
+|   TX|Yellow|   20|
++-----+------+-----+
+only showing top 20 rows
+
+
+22/06/15 17:25:57 INFO DAGScheduler: Job 21 finished: showString at <unknown>:0, took 0,036826 s
++-----+------+-----+
+|State| Color|Count|
++-----+------+-----+
+|   TX|   Red|   20|
+|   NV|  Blue|   66|
+|   CO|  Blue|   79|
+|   OR|  Blue|   71|
+|   WA|Yellow|   93|
+|   WY|  Blue|   16|
+|   CA|Yellow|   53|
+|   WA| Green|   60|
+|   OR| Green|   71|
+|   TX| Green|   68|
+|   NV| Green|   59|
+|   AZ| Brown|   95|
+|   WA|Yellow|   20|
+|   AZ|  Blue|   75|
+|   OR| Brown|   72|
+|   NV|   Red|   98|
+|   WY|Orange|   45|
+|   CO|  Blue|   52|
+|   TX| Brown|   94|
+|   CO|   Red|   82|
++-----+------+-----+
+only showing top 20 rows
