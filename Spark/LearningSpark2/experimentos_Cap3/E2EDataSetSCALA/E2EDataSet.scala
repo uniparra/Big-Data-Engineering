@@ -84,9 +84,9 @@ object E2EDataSet {
 
     /**"Sintetizamos" las tres consultas en una. Remarcar que no es exactamente lo mismo, ya que la agregación queda determinada por la agrupación. **/
     //Sintetizamos las consultas anteriores en una.
-    IoTDS.filter(col("humidity").isNotNull && col("temp").isNotNull && col("c02_level").isNotNull).filter(d => {d.cn != ""})
-      .groupBy("cn").agg((F.avg("temp") as "TempMedia"), (F.sum("c02_level") as "sumC02_level"), (F.avg("humidity") as "humedadMedia"))
-      .orderBy(col("cn").asc, col("TempMedia").desc, col("sumC02_level").desc,col("humedadMedia").desc)
+    IoTDS.filter(col("humidity").isNotNull && col("temp").isNotNull && col("c02_level").isNotNull).filter(d => {d.cn != ""})//Se tratan los nulos y las cadenas vacías, "eliminandolas" del dataset(en realidad se esta creando un nuevo dataset)
+      .groupBy("cn").agg((F.avg("temp") as "TempMedia"), (F.sum("c02_level") as "sumC02_level"), (F.avg("humidity") as "humedadMedia"))//Se agrupa (colapsa) en paises y se le añaden las funciones de agregación pertinentes
+      .orderBy(col("cn").asc, col("TempMedia").desc, col("sumC02_level").desc,col("humedadMedia").desc)//Ordenamos
       .show()
   }
 }
