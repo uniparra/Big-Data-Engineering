@@ -86,7 +86,7 @@ object E2EDataSet {
     //Sintetizamos las consultas anteriores en una.
     IoTDS.filter(col("humidity").isNotNull && col("temp").isNotNull && col("c02_level").isNotNull).filter(d => {d.cn != ""})
       .groupBy("cn").agg((F.avg("temp") as "TempMedia"), (F.sum("c02_level") as "sumC02_level"), (F.avg("humidity") as "humedadMedia"))
-      .orderBy("cn", "TempMedia", "sumC02_level","humedadMedia")
+      .orderBy(col("cn").asc, col("TempMedia").desc, col("sumC02_level").desc,col("humedadMedia").desc)
       .show()
   }
 }
