@@ -10,7 +10,7 @@ object E2EDataFrame {
     //Empezamos por definir la SparkSession
     val spark = SparkSession.builder.appName("FireCallsSF").getOrCreate()
 
-    //creamos el DataFrame
+    //creamos el DataFrame. RECORDAR QUE EL METASTORE DEL FICHERO PARQUET GUARDA EL SCHEMA POR LO QUE NO HACE FALTA DEFINIRLO.
     val sfFireCallsDF = spark.read.option("header", true).option("inferSchema",true).parquet("C:\\Users\\unai.iparraguirre\\Documents\\BIG DATA\\DATA\\sf-fire-calls.parquet")
     //arreglamos la fecha del CallDate, ya que en varios ejercicios tendremos que filtrar por años o meses.
     val dateFireDF =sfFireCallsDF.withColumn("IncidentDay", to_date(col("CallDate"), "MM/dd/yyyy")).drop("CallDate")
