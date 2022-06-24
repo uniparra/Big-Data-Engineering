@@ -1,0 +1,193 @@
+
+ |-- CallNumber: integer (nullable = true)
+ |-- UnitID: string (nullable = true)
+ |-- IncidentNumber: integer (nullable = true)
+ |-- CallType: string (nullable = true)
+ |-- WatchDate: string (nullable = true)
+ |-- CallFinalDisposition: string (nullable = true)
+ |-- AvailableDtTm: string (nullable = true)
+ |-- Address: string (nullable = true)
+ |-- City: string (nullable = true)
+ |-- Zipcode: integer (nullable = true)
+ |-- Battalion: string (nullable = true)
+ |-- StationArea: string (nullable = true)
+ |-- Box: string (nullable = true)
+ |-- OriginalPriority: string (nullable = true)
+ |-- Priority: string (nullable = true)
+ |-- FinalPriority: integer (nullable = true)
+ |-- ALSUnit: boolean (nullable = true)
+ |-- CallTypeGroup: string (nullable = true)
+ |-- NumAlarms: integer (nullable = true)
+ |-- UnitType: string (nullable = true)
+ |-- UnitSequenceInCallDispatch: integer (nullable = true)
+ |-- FirePreventionDistrict: string (nullable = true)
+ |-- SupervisorDistrict: string (nullable = true)
+ |-- Neighborhood: string (nullable = true)
+ |-- Location: string (nullable = true)
+ |-- RowID: string (nullable = true)
+ |-- Delay: float (nullable = true)
+ |-- IncidentDay: date (nullable = true)
+
+The number of calls during 2018 is: 
+
+22/06/14 11:37:27 INFO DAGScheduler: Job 5 finished: show at E2EDataFrame.scala:35, took 0,434720 s
+22/06/14 11:37:27 INFO CodeGenerator: Code generated in 15.3487 ms
++--------------------+-----------------+
+|            CallType|DistinctCallTypes|
++--------------------+-----------------+
+|Gas Leak (Natural...|                1|
+|        Vehicle Fire|                1|
+|Elevator / Escala...|                1|
+|  Suspicious Package|                1|
+|Smoke Investigati...|                1|
+|              Alarms|                1|
+|        Outside Fire|                1|
+|    Medical Incident|                1|
+|          Fuel Spill|                1|
+|      Structure Fire|                1|
+|Citizen Assist / ...|                1|
+|        Water Rescue|                1|
+|               Other|                1|
+|Odor (Strange / U...|                1|
+|           Explosion|                1|
+|Train / Rail Inci...|                1|
+|       Assist Police|                1|
+|   Electrical Hazard|                1|
+|              HazMat|                1|
+|   Traffic Collision|                1|
++--------------------+-----------------+
+
+
+22/06/14 11:37:27 INFO DAGScheduler: Job 8 finished: show at E2EDataFrame.scala:40, took 0,099182 s
++-----------+
+|IncidentDay|
++-----------+
++-----------+
+
+
+22/06/14 11:37:29 INFO DAGScheduler: Job 9 finished: show at E2EDataFrame.scala:46, took 0,991829 s
+22/06/14 11:37:29 INFO CodeGenerator: Code generated in 10.6114 ms
++------------------+-----+
+|month(IncidentDay)|count|
++------------------+-----+
+|                10| 1068|
+|                 5| 1047|
+|                 3| 1029|
+|                 8| 1021|
+|                 1| 1007|
+|                 6|  974|
+|                 7|  974|
+|                 9|  951|
+|                 4|  947|
+|                 2|  919|
+|                11|  199|
++------------------+-----+
+
+
+22/06/14 11:37:30 INFO DAGScheduler: Job 10 finished: show at E2EDataFrame.scala:53, took 1,110066 s
+22/06/14 11:37:30 INFO CodeGenerator: Code generated in 12.8374 ms
++--------------------+-----+
+|        Neighborhood|count|
++--------------------+-----+
+|          Tenderloin| 1393|
+|     South of Market| 1053|
+|             Mission|  913|
+|Financial Distric...|  772|
+|Bayview Hunters P...|  522|
+|    Western Addition|  352|
+|     Sunset/Parkside|  346|
+|            Nob Hill|  295|
+|        Hayes Valley|  291|
+|      Outer Richmond|  262|
+| Castro/Upper Market|  251|
+|         North Beach|  231|
+|           Excelsior|  212|
+|        Potrero Hill|  210|
+|  West of Twin Peaks|  210|
++--------------------+-----+
+only showing top 15 rows
+
+
+22/06/14 11:37:32 INFO CodeGenerator: Code generated in 13.9927 ms
+22/06/14 11:37:32 INFO CodeGenerator: Code generated in 10.5873 ms
++--------------------+------------------+
+|        Neighborhood|         SumaDelay|
++--------------------+------------------+
+|          Tenderloin| 5713.416682377458|
+|     South of Market| 4019.916673846543|
+|Financial Distric...|3353.6333242356777|
+|             Mission|3150.3333284556866|
+|Bayview Hunters P...|2411.9333442747593|
+|     Sunset/Parkside|1240.1333360522985|
+|           Chinatown|1182.3499933183193|
+|    Western Addition|1156.0833313167095|
+|            Nob Hill|1120.9999947845936|
+|        Hayes Valley| 980.7833325713873|
+|      Outer Richmond| 955.7999980300665|
+| Castro/Upper Market|   954.11666418612|
+|         North Beach| 898.4166664481163|
+|  West of Twin Peaks| 880.1000022888184|
+|        Potrero Hill| 880.0166715979576|
+|           Excelsior|  834.516668587923|
+|     Pacific Heights| 798.4666626155376|
+|         Mission Bay| 686.1666701734066|
+|        Inner Sunset|  683.466663569212|
+|              Marina| 654.5166680216789|
+|      Bernal Heights| 653.8999985456467|
+|           Lakeshore| 617.1666670441628|
+|      Haight Ashbury| 597.3000011146069|
+|      Inner Richmond| 563.0500034987926|
+|        Russian Hill| 556.6333324313164|
+|Oceanview/Merced/...| 548.6666663438082|
+|       Outer Mission|497.55000269412994|
+|            Presidio| 402.2166637778282|
+|     Treasure Island| 392.6666652560234|
+|   Visitacion Valley| 365.7999996840954|
+|   Lone Mountain/USF| 350.7000018954277|
+|    Presidio Heights| 326.1833352446556|
+|           Japantown| 314.6833351254463|
+|          Noe Valley| 278.5500009059906|
+|             Portola| 277.1000000536442|
+|    Golden Gate Park|245.51666583120823|
+|          Twin Peaks| 227.4833328127861|
+|           Glen Park|157.33333325386047|
+|        McLaren Park|  66.4166669845581|
+|            Seacliff|63.916667103767395|
+|        Lincoln Park|29.800000071525574|
+|                None| 16.81666660308838|
++--------------------+------------------+
+
+
+22/06/14 11:37:33 INFO DAGScheduler: Job 12 finished: show at E2EDataFrame.scala:71, took 0,854572 s
++----------+-----+
+|weekOfYear|count|
++----------+-----+
+|        22|  259|
+|        40|  255|
+|        43|  250|
+|        25|  249|
+|         1|  246|
+|        44|  244|
+|        13|  243|
+|        32|  243|
+|        11|  240|
+|         5|  236|
+|        18|  236|
+|        23|  235|
+|         2|  234|
+|        42|  234|
+|        31|  234|
+|        19|  233|
+|         8|  232|
+|        34|  232|
+|        10|  232|
+|        28|  231|
++----------+-----+
+only showing top 20 rows
+
+
+El coeficiente de correlacion entre el código postal y el número de llamadas es de 0.021833643906198207. 
+Es decir no existe correlación de ningun tipo. 
+
+
+Process finished with exit code 0
