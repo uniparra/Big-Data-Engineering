@@ -1,0 +1,442 @@
+C:\Java\jdk1.8.0_331\bin\java.exe "-Dspark.master=local[*]" "(...)
+
+airports-na
++-----------+-----+-------+----+
+|       City|State|Country|IATA|
++-----------+-----+-------+----+
+| Abbotsford|   BC| Canada| YXX|
+|   Aberdeen|   SD|    USA| ABR|
+|    Abilene|   TX|    USA| ABI|
+|      Akron|   OH|    USA| CAK|
+|    Alamosa|   CO|    USA| ALS|
+|     Albany|   GA|    USA| ABY|
+|     Albany|   NY|    USA| ALB|
+|Albuquerque|   NM|    USA| ABQ|
+| Alexandria|   LA|    USA| AEX|
+|  Allentown|   PA|    USA| ABE|
++-----------+-----+-------+----+
+
+Delays
++--------+-----+--------+------+-----------+
+|    date|delay|distance|origin|destination|
++--------+-----+--------+------+-----------+
+|01011245|    6|     602|   ABE|        ATL|
+|01020600|   -8|     369|   ABE|        DTW|
+|01021245|   -2|     602|   ABE|        ATL|
+|01020605|   -4|     602|   ABE|        ATL|
+|01031245|   -4|     602|   ABE|        ATL|
+|01030605|    0|     602|   ABE|        ATL|
+|01041243|   10|     602|   ABE|        ATL|
+|01040605|   28|     602|   ABE|        ATL|
+|01051245|   88|     602|   ABE|        ATL|
+|01050605|    9|     602|   ABE|        ATL|
++--------+-----+--------+------+-----------+
+
+foo
++--------+-----+--------+------+-----------+
+|    date|delay|distance|origin|destination|
++--------+-----+--------+------+-----------+
+|01010710|   31|     590|   SEA|        SFO|
+|01010955|  104|     590|   SEA|        SFO|
+|01010730|    5|     590|   SEA|        SFO|
++--------+-----+--------+------+-----------+
+
+-----------------------------OPERACIONES---------------------------
+operacion UNION
++--------+-----+--------+------+-----------+
+|    date|delay|distance|origin|destination|
++--------+-----+--------+------+-----------+
+|01011245|    6|     602|   ABE|        ATL|
+|01020600|   -8|     369|   ABE|        DTW|
+|01021245|   -2|     602|   ABE|        ATL|
+|01020605|   -4|     602|   ABE|        ATL|
+|01031245|   -4|     602|   ABE|        ATL|
+|01030605|    0|     602|   ABE|        ATL|
+|01041243|   10|     602|   ABE|        ATL|
+|01040605|   28|     602|   ABE|        ATL|
+|01051245|   88|     602|   ABE|        ATL|
+|01050605|    9|     602|   ABE|        ATL|
++--------+-----+--------+------+-----------+
+only showing top 10 rows
+
++--------+-----+--------+------+-----------+
+|    date|delay|distance|origin|destination|
++--------+-----+--------+------+-----------+
+|01010710|   31|     590|   SEA|        SFO|
+|01010955|  104|     590|   SEA|        SFO|
+|01010730|    5|     590|   SEA|        SFO|
+|01010710|   31|     590|   SEA|        SFO|
+|01010955|  104|     590|   SEA|        SFO|
+|01010730|    5|     590|   SEA|        SFO|
++--------+-----+--------+------+-----------+
+
++--------+-----+--------+------+-----------+
+|    date|delay|distance|origin|destination|
++--------+-----+--------+------+-----------+
+|01010710|   31|     590|   SEA|        SFO|
+|01010955|  104|     590|   SEA|        SFO|
+|01010730|    5|     590|   SEA|        SFO|
+|01010710|   31|     590|   SEA|        SFO|
+|01010955|  104|     590|   SEA|        SFO|
+|01010730|    5|     590|   SEA|        SFO|
++--------+-----+--------+------+-----------+
+
+Operación JOIN
++-------+-----+--------+-----+--------+-----------+
+|   City|State|    date|delay|distance|destination|
++-------+-----+--------+-----+--------+-----------+
+|Seattle|   WA|01010710|   31|     590|        SFO|
+|Seattle|   WA|01010955|  104|     590|        SFO|
+|Seattle|   WA|01010730|    5|     590|        SFO|
++-------+-----+--------+-----+--------+-----------+
+
++-------+-----+--------+-----+--------+-----------+
+|   City|State|    date|delay|distance|destination|
++-------+-----+--------+-----+--------+-----------+
+|Seattle|   WA|01010710|   31|     590|        SFO|
+|Seattle|   WA|01010955|  104|     590|        SFO|
+|Seattle|   WA|01010730|    5|     590|        SFO|
++-------+-----+--------+-----+--------+-----------+
+
+Preparacion de datos para Windowing
+22/06/29 12:12:58 WARN ProcfsMetricsGetter: Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
++------+-----------+-----------+
+|origin|destination|TotalDelays|
++------+-----------+-----------+
+|   JFK|        ORD|       5608|
+|   SEA|        LAX|       9359|
+|   JFK|        SFO|      35619|
+|   SFO|        ORD|      27412|
+|   JFK|        DEN|       4315|
+|   SFO|        DEN|      18688|
+|   SFO|        SEA|      17080|
+|   SEA|        SFO|      22293|
+|   JFK|        ATL|      12141|
+|   SFO|        ATL|       5091|
+|   SEA|        DEN|      13645|
+|   SEA|        ATL|       4535|
+|   SEA|        ORD|      10041|
+|   JFK|        SEA|       7856|
+|   JFK|        LAX|      35755|
+|   SFO|        JFK|      24100|
+|   SFO|        LAX|      40798|
+|   SEA|        JFK|       4667|
++------+-----------+-----------+
+
+Operación WINDOWING
++------+-----------+-----------+
+|origin|destination|TotalDelays|
++------+-----------+-----------+
+|   SFO|        LAX|      40798|
+|   JFK|        LAX|      35755|
+|   JFK|        SFO|      35619|
+|   SFO|        ORD|      27412|
+|   SFO|        JFK|      24100|
+|   SEA|        SFO|      22293|
+|   SFO|        DEN|      18688|
+|   SFO|        SEA|      17080|
+|   SEA|        DEN|      13645|
+|   JFK|        ATL|      12141|
++------+-----------+-----------+
+
+-- dense_rank() ---> Esta función devuelve el rango de cada fila dentro de una partición del conjunto de resultados, sin espacios en los valores de clasificación.
+ El rango de una fila específica es uno más el número de valores de rango distintos anteriores a esa fila específica.
++------+-----------+-----------+----+
+|origin|destination|TotalDelays|rank|
++------+-----------+-----------+----+
+|   SEA|        SFO|      22293|   1|
+|   SEA|        DEN|      13645|   2|
+|   SEA|        ORD|      10041|   3|
+|   SFO|        LAX|      40798|   1|
+|   SFO|        ORD|      27412|   2|
+|   SFO|        JFK|      24100|   3|
+|   JFK|        LAX|      35755|   1|
+|   JFK|        SFO|      35619|   2|
+|   JFK|        ATL|      12141|   3|
++------+-----------+-----------+----+
+
+-- percent_rank() ---> Calcula el rango relativo de una fila dentro de un grupo de filas
++------+-----------+-----------+----+
+|origin|destination|TotalDelays|rank|
++------+-----------+-----------+----+
+|   SEA|        SFO|      22293| 0.0|
+|   SEA|        DEN|      13645| 0.2|
+|   SEA|        ORD|      10041| 0.4|
+|   SEA|        LAX|       9359| 0.6|
+|   SEA|        JFK|       4667| 0.8|
+|   SEA|        ATL|       4535| 1.0|
+|   SFO|        LAX|      40798| 0.0|
+|   SFO|        ORD|      27412| 0.2|
+|   SFO|        JFK|      24100| 0.4|
+|   SFO|        DEN|      18688| 0.6|
+|   SFO|        SEA|      17080| 0.8|
+|   SFO|        ATL|       5091| 1.0|
+|   JFK|        LAX|      35755| 0.0|
+|   JFK|        SFO|      35619| 0.2|
+|   JFK|        ATL|      12141| 0.4|
+|   JFK|        SEA|       7856| 0.6|
+|   JFK|        ORD|       5608| 0.8|
+|   JFK|        DEN|       4315| 1.0|
++------+-----------+-----------+----+
+
+-- ntile(int) ---> Distribuye las filas de una partición ordenada en un número especificado de grupos. Los grupos se numeran a partir del uno.
+ Para cada fila, NTILE devuelve el número del grupo al que pertenece la fila.
++------+-----------+-----------+----+
+|origin|destination|TotalDelays|rank|
++------+-----------+-----------+----+
+|   SEA|        SFO|      22293|   1|
+|   SEA|        DEN|      13645|   2|
+|   SEA|        ORD|      10041|   3|
+|   SEA|        LAX|       9359|   4|
+|   SEA|        JFK|       4667|   5|
+|   SEA|        ATL|       4535|   6|
+|   SFO|        LAX|      40798|   1|
+|   SFO|        ORD|      27412|   2|
+|   SFO|        JFK|      24100|   3|
+|   SFO|        DEN|      18688|   4|
+|   SFO|        SEA|      17080|   5|
+|   SFO|        ATL|       5091|   6|
+|   JFK|        LAX|      35755|   1|
+|   JFK|        SFO|      35619|   2|
+|   JFK|        ATL|      12141|   3|
+|   JFK|        SEA|       7856|   4|
+|   JFK|        ORD|       5608|   5|
+|   JFK|        DEN|       4315|   6|
++------+-----------+-----------+----+
+
+-- row_number() ---> Enumera los resultados de un conjunto de resultados. Concretamente, devuelve el número secuencial de una fila dentro de una
+ partición de un conjunto de resultados, empezando por 1 para la primera fila de cada partición.
++------+-----------+-----------+----+
+|origin|destination|TotalDelays|rank|
++------+-----------+-----------+----+
+|   SEA|        SFO|      22293|   1|
+|   SEA|        DEN|      13645|   2|
+|   SEA|        ORD|      10041|   3|
+|   SEA|        LAX|       9359|   4|
+|   SEA|        JFK|       4667|   5|
+|   SFO|        LAX|      40798|   1|
+|   SFO|        ORD|      27412|   2|
+|   SFO|        JFK|      24100|   3|
+|   SFO|        DEN|      18688|   4|
+|   SFO|        SEA|      17080|   5|
+|   JFK|        LAX|      35755|   1|
+|   JFK|        SFO|      35619|   2|
+|   JFK|        ATL|      12141|   3|
+|   JFK|        SEA|       7856|   4|
+|   JFK|        ORD|       5608|   5|
++------+-----------+-----------+----+
+
+-- cume_dist() ---> esta función calcula la distribución acumulativa de un valor en un grupo de valores. Es decir, CUME_DIST calcula la posición relativa de un valor especificado en un grupo de valores.
+ Suponiendo un orden ascendente, el CUME_DIST de un valor en la fila r se define como el número de filas
+ con valores menores o iguales que el valor de la fila r, dividido entre el número de filas evaluadas en la partición o el conjunto de resultados de la consulta. CUME_DIST es similar a la función PERCENT_RANK.
++------+-----------+-----------+-------------------+
+|origin|destination|TotalDelays|               rank|
++------+-----------+-----------+-------------------+
+|   SEA|        SFO|      22293|0.16666666666666666|
+|   SEA|        DEN|      13645| 0.3333333333333333|
+|   SEA|        ORD|      10041|                0.5|
+|   SEA|        LAX|       9359| 0.6666666666666666|
+|   SEA|        JFK|       4667| 0.8333333333333334|
+|   SEA|        ATL|       4535|                1.0|
+|   SFO|        LAX|      40798|0.16666666666666666|
+|   SFO|        ORD|      27412| 0.3333333333333333|
+|   SFO|        JFK|      24100|                0.5|
+|   SFO|        DEN|      18688| 0.6666666666666666|
+|   SFO|        SEA|      17080| 0.8333333333333334|
+|   SFO|        ATL|       5091|                1.0|
+|   JFK|        LAX|      35755|0.16666666666666666|
+|   JFK|        SFO|      35619| 0.3333333333333333|
+|   JFK|        ATL|      12141|                0.5|
+|   JFK|        SEA|       7856| 0.6666666666666666|
+|   JFK|        ORD|       5608| 0.8333333333333334|
+|   JFK|        DEN|       4315|                1.0|
++------+-----------+-----------+-------------------+
+
+-- first_value() ---> Devuelve el primer valor de un conjunto ordenado de valores de cada partición.
+22/06/29 12:13:18 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
++------+-----------+-----------+-----+
+|origin|destination|TotalDelays| rank|
++------+-----------+-----------+-----+
+|   SFO|        LAX|      40798|40798|
+|   JFK|        LAX|      35755|40798|
+|   JFK|        SFO|      35619|40798|
+|   SFO|        ORD|      27412|40798|
+|   SFO|        JFK|      24100|40798|
+|   SEA|        SFO|      22293|40798|
+|   SFO|        DEN|      18688|40798|
+|   SFO|        SEA|      17080|40798|
+|   SEA|        DEN|      13645|40798|
+|   JFK|        ATL|      12141|40798|
+|   SEA|        ORD|      10041|40798|
+|   SEA|        LAX|       9359|40798|
+|   JFK|        SEA|       7856|40798|
+|   JFK|        ORD|       5608|40798|
+|   SFO|        ATL|       5091|40798|
+|   SEA|        JFK|       4667|40798|
+|   SEA|        ATL|       4535|40798|
+|   JFK|        DEN|       4315|40798|
++------+-----------+-----------+-----+
+
++------+-----------+-----------+-----+
+|origin|destination|TotalDelays| rank|
++------+-----------+-----------+-----+
+|   SEA|        SFO|      22293|22293|
+|   SEA|        DEN|      13645|22293|
+|   SEA|        ORD|      10041|22293|
+|   SEA|        LAX|       9359|22293|
+|   SEA|        JFK|       4667|22293|
+|   SEA|        ATL|       4535|22293|
+|   SFO|        LAX|      40798|40798|
+|   SFO|        ORD|      27412|40798|
+|   SFO|        JFK|      24100|40798|
+|   SFO|        DEN|      18688|40798|
+|   SFO|        SEA|      17080|40798|
+|   SFO|        ATL|       5091|40798|
+|   JFK|        LAX|      35755|35755|
+|   JFK|        SFO|      35619|35755|
+|   JFK|        ATL|      12141|35755|
+|   JFK|        SEA|       7856|35755|
+|   JFK|        ORD|       5608|35755|
+|   JFK|        DEN|       4315|35755|
++------+-----------+-----------+-----+
+
+-- last_value() ---> Devuelve el último valor de un conjunto ordenado de valores de cada particion.
++------+-----------+-----------+-----+
+|origin|destination|TotalDelays| rank|
++------+-----------+-----------+-----+
+|   SEA|        ATL|       4535| 4535|
+|   SEA|        JFK|       4667| 4667|
+|   SEA|        LAX|       9359| 9359|
+|   SEA|        ORD|      10041|10041|
+|   SEA|        DEN|      13645|13645|
+|   SEA|        SFO|      22293|22293|
+|   SFO|        ATL|       5091| 5091|
+|   SFO|        SEA|      17080|17080|
+|   SFO|        DEN|      18688|18688|
+|   SFO|        JFK|      24100|24100|
+|   SFO|        ORD|      27412|27412|
+|   SFO|        LAX|      40798|40798|
+|   JFK|        DEN|       4315| 4315|
+|   JFK|        ORD|       5608| 5608|
+|   JFK|        SEA|       7856| 7856|
+|   JFK|        ATL|      12141|12141|
+|   JFK|        SFO|      35619|35619|
+|   JFK|        LAX|      35755|35755|
++------+-----------+-----------+-----+
+
+-- lag() --->  LAG proporciona acceso a una fila en un desplazamiento físico especificado que hay antes de la fila actual.
+ Use esta función analítica en una instrucción SELECT para comparar valores de la fila actual con valores de una fila anterior.
++------+-----------+-----------+-----+
+|origin|destination|TotalDelays| rank|
++------+-----------+-----------+-----+
+|   SEA|        SFO|      22293|    0|
+|   SEA|        DEN|      13645|22293|
+|   SEA|        ORD|      10041|13645|
+|   SEA|        LAX|       9359|10041|
+|   SEA|        JFK|       4667| 9359|
+|   SEA|        ATL|       4535| 4667|
+|   SFO|        LAX|      40798|    0|
+|   SFO|        ORD|      27412|40798|
+|   SFO|        JFK|      24100|27412|
+|   SFO|        DEN|      18688|24100|
+|   SFO|        SEA|      17080|18688|
+|   SFO|        ATL|       5091|17080|
+|   JFK|        LAX|      35755|    0|
+|   JFK|        SFO|      35619|35755|
+|   JFK|        ATL|      12141|35619|
+|   JFK|        SEA|       7856|12141|
+|   JFK|        ORD|       5608| 7856|
+|   JFK|        DEN|       4315| 5608|
++------+-----------+-----------+-----+
+
+-- lead() ---> LEAD proporciona acceso a una fila en un desplazamiento físico especificado que hay después de la fila actual. Use esta función analítica en una instrucción SELECT para comparar valores de la fila actual con valores de una fila posterior.
++------+-----------+-----------+-----+
+|origin|destination|TotalDelays| rank|
++------+-----------+-----------+-----+
+|   SEA|        SFO|      22293|13645|
+|   SEA|        DEN|      13645|10041|
+|   SEA|        ORD|      10041| 9359|
+|   SEA|        LAX|       9359| 4667|
+|   SEA|        JFK|       4667| 4535|
+|   SEA|        ATL|       4535|    0|
+|   SFO|        LAX|      40798|27412|
+|   SFO|        ORD|      27412|24100|
+|   SFO|        JFK|      24100|18688|
+|   SFO|        DEN|      18688|17080|
+|   SFO|        SEA|      17080| 5091|
+|   SFO|        ATL|       5091|    0|
+|   JFK|        LAX|      35755|35619|
+|   JFK|        SFO|      35619|12141|
+|   JFK|        ATL|      12141| 7856|
+|   JFK|        SEA|       7856| 5608|
+|   JFK|        ORD|       5608| 4315|
+|   JFK|        DEN|       4315|    0|
++------+-----------+-----------+-----+
+
+-------------------MODIFICACIONES----------------------------------------------------
+DF sobre el que se haran modificaciones
++--------+-----+--------+------+-----------+
+|    date|delay|distance|origin|destination|
++--------+-----+--------+------+-----------+
+|01010710|   31|     590|   SEA|        SFO|
+|01010955|  104|     590|   SEA|        SFO|
+|01010730|    5|     590|   SEA|        SFO|
++--------+-----+--------+------+-----------+
+
+Nueva columna
++--------+-----+--------+------+-----------+-------+
+|date    |delay|distance|origin|destination|status |
++--------+-----+--------+------+-----------+-------+
+|01010710|31   |590     |SEA   |SFO        |Delayed|
+|01010955|104  |590     |SEA   |SFO        |Delayed|
+|01010730|5    |590     |SEA   |SFO        |On-time|
++--------+-----+--------+------+-----------+-------+
+
+Eliminar columna
++--------+--------+------+-----------+-------+
+|date    |distance|origin|destination|status |
++--------+--------+------+-----------+-------+
+|01010710|590     |SEA   |SFO        |Delayed|
+|01010955|590     |SEA   |SFO        |Delayed|
+|01010730|590     |SEA   |SFO        |On-time|
++--------+--------+------+-----------+-------+
+
+Renombrar columna
++--------+--------+------+-----------+-------------+
+|date    |distance|origin|destination|flight_status|
++--------+--------+------+-----------+-------------+
+|01010710|590     |SEA   |SFO        |Delayed      |
+|01010955|590     |SEA   |SFO        |Delayed      |
+|01010730|590     |SEA   |SFO        |On-time      |
++--------+--------+------+-----------+-------------+
+
+Pivotaje o cambio de orden de columnas
++-----------+-----+-----+
+|destination|month|delay|
++-----------+-----+-----+
+|ORD        |1    |92   |
+|JFK        |1    |-7   |
+|DFW        |1    |-5   |
+|MIA        |1    |-3   |
+|DFW        |1    |-3   |
+|DFW        |1    |1    |
+|ORD        |1    |-10  |
+|DFW        |1    |-6   |
+|DFW        |1    |-2   |
+|ORD        |1    |-3   |
+|ORD        |1    |0    |
+|DFW        |1    |23   |
+|DFW        |1    |36   |
+|ORD        |1    |298  |
+|JFK        |1    |4    |
+|DFW        |1    |0    |
+|MIA        |1    |2    |
+|DFW        |1    |0    |
+|DFW        |1    |0    |
+|ORD        |1    |83   |
++-----------+-----+-----+
+only showing top 20 rows
+
+En pivotaje también permite poner nombres a columnas así como realizar cálculos agregados
+
+Process finished with exit code 0
