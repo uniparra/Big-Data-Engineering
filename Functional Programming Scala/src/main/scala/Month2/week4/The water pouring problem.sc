@@ -189,7 +189,7 @@ val objetivo = 6
 val vasosEle = eleccionVasos(vasosIniciales, objetivo)
 println(mostrarProceso(resolvedor(vasosEle, objetivo)))
 
-
+def prueba2 = "adiosadios"
 
 
 
