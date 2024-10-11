@@ -190,6 +190,7 @@ val vasosEle = eleccionVasos(vasosIniciales, objetivo)
 println(mostrarProceso(resolvedor(vasosEle, objetivo)))
 
 def prueba2 = "adiosadios"
+def pruebasiguiente = "holaadios"
 def pruebaGit="hola hola"
 
 
